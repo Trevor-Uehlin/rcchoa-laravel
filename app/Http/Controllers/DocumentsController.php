@@ -11,8 +11,10 @@ class DocumentsController extends Controller {
     public function index() {
 
         $documents = Document::latest()->get();
+
+        $message = empty($documents->toArray()) ? "No documents available." : "This is the list of HOA documents.";
         
-        return view("documents.index", compact("documents"));
+        return view("documents.index", compact("documents", "message"));
     }
 
     public function download() {

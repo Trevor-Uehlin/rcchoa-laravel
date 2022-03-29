@@ -27,7 +27,7 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Go home</a>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
@@ -43,7 +43,7 @@
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <h1>Welcome to the Red Cedar Court HOA</h1>
                 </div>
-                please log in...
+                please log in...or register...or go home.
             </div>
 
         </div>

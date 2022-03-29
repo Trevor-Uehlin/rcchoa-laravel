@@ -30,11 +30,9 @@ Route::group(["middleware" => "auth"], function(){
     Route::get("/home", function(){ 
         return view("home");
     })->name("home");
-    
-    Route::get("/documents", function(){ 
-        return view("documents");
-    })->name("documents");
 
+    Route::resource("/documents", "App\Http\Controllers\DocumentsController")->names(["index" => "documents"]);
+    
 });
 
 

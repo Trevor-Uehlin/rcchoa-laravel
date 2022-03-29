@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <x-slot name="logo">
-                <a href="/" style="color:blue;">
+                <a href="/" style="color:blue;">&#129152;
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
                     Red Cedar Court HOA
                 </a>

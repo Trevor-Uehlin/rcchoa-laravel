@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Document;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,10 +26,16 @@ Route::group(["middleware" => "auth"], function(){
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/download/{id}', function($id) {
+
+        $doc = Document::find($id);
+
+        return Storage::download($doc->filepath, $doc->name);
+    });
+
+    Route::get("/document/delete/{id}", "App\Http\Controllers\DocumentsController@destroy");
     
-    Route::get("/home", function(){ 
-        return view("home");
-    })->name("home");
 
     Route::resource("/documents", "App\Http\Controllers\DocumentsController")->names(["index" => "documents"]);
     

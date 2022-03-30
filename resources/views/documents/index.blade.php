@@ -14,26 +14,23 @@
             </div>
         </div>
     </div>
-
-    <div class="container" style="padding:10px;">
-
-        @if(!empty($documents))
-            @foreach($documents as $doc)
-            <div>
-
-                <h1>{{$doc->subject}}</h1>
-
-                {!! Form::open(["method" => "POST", "action" => ["App\Http\Controllers\DocumentsController@show", $doc->id]]) !!}
-                {!! Form::submit("Download", ["class" => "btn btn-primary"]) !!}
-                {!! Form::close() !!}
-
+    
+    <div class="container" style="background-color:darkcyan">
+        @foreach($documents as $doc)
+            <div class="py-2">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                        <div class="p-6 bg-white border-b border-gray-200">
+                            <p><strong>Published:</strong> {{Carbon\Carbon::parse($doc->created_at)->format("l, F, Y")}}</p>
+                            <p><strong>{{$doc->title}}</strong></p>
+                            <p>{{$doc->description}}</p>
+                            <a href="/download/{{$doc->id}}">{{$doc->name}}&nbsp;<i class="fa fa-download" style="font-size:20px;color:blue;"></i></a>
+                            @if($user->isAdministrator())<a href="/document/delete/{{$doc->id}}"><i class="fa fa-trash-o" style="font-size:48px;color:red;float:right;"></i></a>@endif
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <br />
-            @endforeach
-        @else
-            <h2>No documents available</h2>
-        @endif
+        @endforeach
     </div>
 
 </x-app-layout>

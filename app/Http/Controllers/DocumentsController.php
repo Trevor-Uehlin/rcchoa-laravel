@@ -2,89 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Models\Document;
 
 class DocumentsController extends Controller {
 
     public function index() {
 
+        $user = Auth::user();
         $documents = Document::latest()->get();
 
         $message = empty($documents->toArray()) ? "No documents available." : "This is the list of HOA documents.";
         
-        return view("documents.index", compact("documents", "message"));
+        return view("documents.index", compact("documents", "message", "user"));
     }
 
-    public function download() {
+    public function create() {
 
-        var_dump("Hello from download");exit;
+        return view("documents.create");
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function store(Request $request){
+        
+        $params = $request->all();
+
+        $file = $request->file("file");
+        
+        $path = $file->store("documents");
+
+        $doc = new Document();
+        $doc->name = $file->getClientOriginalName();
+        $doc->title = $params["title"];
+        $doc->description = $params["description"];
+        $doc->category = $params["category"];
+        $doc->filepath = $path;
+        $doc->user_id = Auth::user()->id;
+        $doc->save();
+
+        return $this->index();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+    public function show($id) {}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        var_dump("Hellow from show");exit;
-    }
+    public function edit($id) {}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+    public function update(Request $request, $id) {}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+    public function destroy($id) {
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $doc = Document::findOrFail($id);
+
+        $path = $doc->filepath;
+
+        Storage::delete($doc->filepath);
+
+        $doc->delete();
+
+        return $this->index();
     }
 }

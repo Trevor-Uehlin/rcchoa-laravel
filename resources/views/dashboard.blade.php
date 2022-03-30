@@ -24,7 +24,13 @@
                     <div class="p-6 bg-white border-b border-gray-200">
                         Administrative Dashboard
                         <br />
-                        Nothing to do here at the moment.
+                        <br />
+                        &#10133;&nbsp;<a href="/documents/create">Upload a New Document</a>
+                        <br />
+                        <br />
+                        &#10133;&nbsp;<a href="{{route("register")}}">Create a New User</a>
+                        <br />
+                        <br />
                     </div>
                 </div>
             </div>

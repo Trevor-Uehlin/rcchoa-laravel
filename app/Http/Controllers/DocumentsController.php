@@ -80,7 +80,7 @@ class DocumentsController extends Controller {
         $file = $request->file("file");
 
         if(!empty($file)) {
-
+            Storage::delete($doc->filepath);
             $path = $file->store("documents");
             $doc->name = $file->getClientOriginalName();
             $doc->filepath = $path;

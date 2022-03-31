@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Document;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,6 @@ Route::group(["middleware" => "web"], function(){
     Route::get('/', function () {
         return view('welcome');
     });
-
-    Route::get("/register/user", function(){
-
-        return view("auth.register");
-    })->name("registeruser");
 });
 
 
@@ -46,6 +42,24 @@ Route::group(["middleware" => "auth"], function(){
     
 
     Route::resource("/documents", "App\Http\Controllers\DocumentsController")->names(["index" => "documents"]);
+
+
+    Route::get("/register/user", function(){
+
+        return view("create_user");
+    })->name("registeruser");
+
+    Route::post("/save/user", function(){
+
+        $user = User::create([
+            'name' => $_POST["name"],
+            'email' => $_POST["email"],
+            'user_type' => $_POST["user_type"],
+            'password' => Hash::make($_POST["password"]),
+        ]);
+
+        return redirect(route("dashboard"));
+    });
     
 });
 

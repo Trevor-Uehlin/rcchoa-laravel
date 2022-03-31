@@ -68,8 +68,8 @@
         document.getElementById("category").addEventListener("change", function(){this.form.submit();});
 
         document.getElementById("delete-button").addEventListener("click", function(e){
-            if(confirm("Are you sure you want to delete this document?")) {}
-            if(confirm("Are you really sure you want to delete this document?")) {}
+            if(!confirm("Are you sure you want to delete this document?")) {e.preventDefault()}
+            else if(!confirm("Are you really sure you want to delete this document?")) {e.preventDefault()}
         });
 
     </script>

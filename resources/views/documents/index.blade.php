@@ -33,12 +33,6 @@
     </div>
 
 
-    {{-- MOVE THIS!!!! --}}
-    <script>
-        
-        let select = document.getElementById("category").addEventListener("change", function(){this.form.submit();});
-
-    </script>
 
 
     <div class="container" style="background-color:darkcyan">
@@ -51,7 +45,7 @@
                                 <div class="float-right">
                                     <a href="{{route("documents.show", $doc->id)}}"><i class="fa fa-edit" style="font-size:40px;color:blue;"></i></a>
                                     <br />
-                                    <a href="/document/delete/{{$doc->id}}"><i class="fa fa-trash-o" style="font-size:40px;color:red;"></i></a>
+                                    <a id="delete-button" href="/document/delete/{{$doc->id}}"><i class="fa fa-trash-o" style="font-size:40px;color:red;"></i></a>
                                 </div>
                             @endif
                             <p>Uploaded - {{Carbon\Carbon::parse($doc->created_at)->format("l, F, Y")}}</p>
@@ -66,5 +60,18 @@
             </div>
         @endforeach
     </div>
+
+    
+    {{-- MOVE THIS!!!! --}}
+    <script>
+        
+        document.getElementById("category").addEventListener("change", function(){this.form.submit();});
+
+        document.getElementById("delete-button").addEventListener("click", function(e){
+            if(confirm("Are you sure you want to delete this document?")) {}
+            if(confirm("Are you really sure you want to delete this document?")) {}
+        });
+
+    </script>
 
 </x-app-layout>

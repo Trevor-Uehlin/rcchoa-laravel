@@ -57,7 +57,7 @@ class DocumentsController extends Controller {
         $doc->user_id = Auth::user()->id;
         $doc->save();
 
-        return $this->index();
+        return redirect(route("documents"));
     }
 
     public function show($id) {
@@ -105,6 +105,6 @@ class DocumentsController extends Controller {
 
         $doc->delete();
 
-        return $this->index();
+        return redirect(route("documents"));
     }
 }

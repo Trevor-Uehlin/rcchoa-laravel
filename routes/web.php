@@ -22,7 +22,7 @@ Route::group(["middleware" => "web"], function(){
     Route::get("/register/user", function(){
 
         return view("auth.register");
-    });
+    })->name("registeruser");
 });
 
 

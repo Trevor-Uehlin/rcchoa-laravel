@@ -28,7 +28,7 @@
                         &#10133;&nbsp;<a href="/documents/create">Upload a New Document</a>
                         <br />
                         <br />
-                        &#10133;&nbsp;<a href="{{route("register")}}">Create a New User</a>
+                        &#10133;&nbsp;<a href="/register/user">Create a New User</a>
                         <br />
                         <br />
                     </div>

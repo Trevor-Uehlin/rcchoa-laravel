@@ -18,6 +18,11 @@ Route::group(["middleware" => "web"], function(){
     Route::get('/', function () {
         return view('welcome');
     });
+
+    Route::get("/register/user", function(){
+
+        return view("auth.register");
+    });
 });
 
 
@@ -26,6 +31,9 @@ Route::group(["middleware" => "auth"], function(){
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+
+    Route::get("documents/filtered", "App\Http\Controllers\DocumentsController@showFiltered");
 
     Route::get('/download/{id}', function($id) {
 

@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <x-slot name="logo">
-                <a href="/" style="color:blue;">&#129152;
+                <a href="/dashboard" style="color:blue;">&#129152;
                     {{-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> --}}
                     Red Cedar Court HOA
                 </a>
@@ -27,6 +27,16 @@
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
+
+            {{-- <!-- User Type -->
+            <div class="mt-4">
+                <x-label for="user_type" :value="__('Select User Type')" />
+
+                <select name="user_type" id="user_type" class="block mt-1 w-full">
+                    <option value="subscriber">Subscriber</option>
+                    <option value="administrator">Administrator</option>
+                </select>
+            </div> --}}
 
             <!-- Password -->
             <div class="mt-4">

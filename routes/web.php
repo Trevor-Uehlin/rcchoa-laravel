@@ -31,9 +31,9 @@ Route::group(["middleware" => "auth"], function(){
 
     #############################################   Documents   ########################################################################
 
+    Route::get("documents/filtered", "App\Http\Controllers\DocumentsController@showFiltered");
     Route::resource("/documents", "App\Http\Controllers\DocumentsController")->names(["index" => "documents"]);
 
-    Route::get("documents/filtered", "App\Http\Controllers\DocumentsController@showFiltered");
 
     Route::get('/download/{id}', function($id) {
 

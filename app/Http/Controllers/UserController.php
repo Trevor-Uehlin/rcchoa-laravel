@@ -33,6 +33,7 @@ class UserController extends Controller {
             'password' => Hash::make($_POST["password"]),
         ]);
 
+
         return redirect(route("users.index"));
     }
 

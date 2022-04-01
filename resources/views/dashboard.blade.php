@@ -25,10 +25,10 @@
                         Administrative Dashboard
                         <br />
                         <br />
-                        &#10133;&nbsp;<a href="/documents/create">Upload a New Document</a>
+                        &#10133;&nbsp;<a href="{{route("documents.create")}}">Upload a New Document</a>
                         <br />
                         <br />
-                        &#10133;&nbsp;<a href="/register/user">Create a New User</a>
+                        &#10133;&nbsp;<a href="{{route("users.create")}}">Create a New User</a>
                         <br />
                         <br />
                     </div>

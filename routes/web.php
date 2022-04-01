@@ -29,6 +29,10 @@ Route::group(["middleware" => "auth"], function(){
     })->name('dashboard');
 
 
+    #############################################   Documents   ########################################################################
+
+    Route::resource("/documents", "App\Http\Controllers\DocumentsController")->names(["index" => "documents"]);
+
     Route::get("documents/filtered", "App\Http\Controllers\DocumentsController@showFiltered");
 
     Route::get('/download/{id}', function($id) {
@@ -41,24 +45,16 @@ Route::group(["middleware" => "auth"], function(){
     Route::get("/document/delete/{id}", "App\Http\Controllers\DocumentsController@destroy");
     
 
-    Route::resource("/documents", "App\Http\Controllers\DocumentsController")->names(["index" => "documents"]);
 
+    #############################################   Users   ########################################################################
 
-    Route::get("/register/user", function(){
+    Route::resource("/users", "App\Http\Controllers\UserController");
 
-        return view("create_user");
-    })->name("registeruser");
+    Route::get("/users/delete/{id}", function($id){
 
-    Route::post("/save/user", function(){
+        $user = User::find($id)->destroy($id);
 
-        $user = User::create([
-            'name' => $_POST["name"],
-            'email' => $_POST["email"],
-            'user_type' => $_POST["user_type"],
-            'password' => Hash::make($_POST["password"]),
-        ]);
-
-        return redirect(route("dashboard"));
+        return redirect(route("users.index"));
     });
     
 });

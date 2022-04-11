@@ -94,7 +94,7 @@ class DocumentsController extends Controller {
         $doc->user_id = Auth::user()->id;
         $doc->update();
 
-        return $this->index();
+        return redirect(route("documents"));
     }
 
     public function destroy($id) {

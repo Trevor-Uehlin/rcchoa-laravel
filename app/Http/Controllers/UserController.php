@@ -33,6 +33,16 @@ class UserController extends Controller {
             'password' => Hash::make($_POST["password"]),
         ]);
 
+        // $user = new User([
+        //     'name' => $_POST["name"],
+        //     'email' => $_POST["email"],
+        //     'user_type' => $_POST["user_type"],
+        //     'password' => Hash::make($_POST["password"]),
+        // ]);
+        
+
+        $user->sendNewAccountNotification();
+
 
         return redirect(route("users.index"));
     }

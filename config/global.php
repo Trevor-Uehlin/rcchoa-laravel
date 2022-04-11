@@ -1,5 +1,5 @@
 <?php
 
 return [
-    "siteTitle" => "The Company"
+    "app.name" => "The Company"
 ];

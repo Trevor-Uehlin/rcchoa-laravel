@@ -18,6 +18,8 @@ class DocumentsController extends Controller {
 
         $categories = DB::table("documents")->select("category")->whereNull("deleted_at")->distinct()->get()->all();
 
+        sort($categories);
+
         $user = Auth::user();
         $documents = empty($docs) ? Document::latest()->get() : $docs;
 

@@ -32,13 +32,6 @@ class UserController extends Controller {
             'user_type' => $_POST["user_type"],
             'password' => Hash::make($_POST["password"]),
         ]);
-
-        // $user = new User([
-        //     'name' => $_POST["name"],
-        //     'email' => $_POST["email"],
-        //     'user_type' => $_POST["user_type"],
-        //     'password' => Hash::make($_POST["password"]),
-        // ]);
         
 
         $user->sendNewAccountNotification();
@@ -54,9 +47,7 @@ class UserController extends Controller {
         return view("user.edit", compact("user"));
     }
 
-    public function edit($id) {
-        //
-    }
+    public function edit($id) {}
 
     public function update(Request $request, $id) {
 

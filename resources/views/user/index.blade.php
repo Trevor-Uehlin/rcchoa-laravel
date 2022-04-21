@@ -28,7 +28,7 @@
                                 <div class="float-right">
                                     <a href="{{route("users.show", $user->id)}}"><i class="fa fa-edit" style="font-size:40px;color:blue;"></i></a>
                                     <br />
-                                    <a id="delete-button" href="users/delete/{{$user->id}}"><i class="fa fa-trash-o" style="font-size:40px;color:red;"></i></a>
+                                    <a href="users/delete/{{$user->id}}" class="delete-button"><i class="fa fa-trash-o" style="font-size:40px;color:red;"></i></a>
                                 </div>
                             @endif
                             <p>Created on {{Carbon\Carbon::parse($user->created_at)->format("l, F, Y")}}</p>
@@ -41,17 +41,5 @@
             </div>
         @endforeach
     </div>
-
-    
-    {{-- MOVE THIS!!!! --}}
-    <script>
-
-        document.getElementById("delete-button").addEventListener("click", function(e){
-            console.log("fuck");
-            if(!confirm("Are you sure you want to delete this user?")) {e.preventDefault()}
-            else if(!confirm("Are you really sure you want to delete this user?")) {e.preventDefault()}
-        });
-
-    </script>
 
 </x-app-layout>

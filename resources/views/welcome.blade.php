@@ -28,6 +28,10 @@
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
 
                 <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
+                    <p class="myname" style="color: rgba(247,250,252,var(--bg-opacity));">Trevor Uehlin</p>
+                </div>
+
+                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
                     <h1>Welcome to the Red Cedar Court HOA</h1>
                 </div>
 

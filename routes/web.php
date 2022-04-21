@@ -16,6 +16,8 @@ use App\Models\User;
 */
 Route::group(["middleware" => "web"], function(){
 
+    Route::get('/sitemap.xml', 'App\Http\Controllers\SitemapXmlController@index');
+
     Route::get('/', function () {
         return view('welcome');
     });

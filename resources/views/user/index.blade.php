@@ -24,17 +24,37 @@
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                         <div class="p-6 bg-white border-b border-gray-200">
-                            @if($currentUser->isAdministrator())
-                                <div class="float-right">
-                                    <a href="{{route("users.show", $user->id)}}"><i class="fa fa-edit" style="font-size:40px;color:blue;"></i></a>
-                                    <br />
-                                    <a href="users/delete/{{$user->id}}" class="delete-button"><i class="fa fa-trash-o" style="font-size:40px;color:red;"></i></a>
-                                </div>
-                            @endif
+
                             <p>Created on {{Carbon\Carbon::parse($user->created_at)->format("l, F, Y")}}</p>
                             <p class="h4"><strong>{{$user->name}}</strong></p>
                             <p><strong>Email: </strong>{{$user->email}}</p>
                             <p><strong>User Type: </strong>{{$user->user_type}}</p>
+
+
+                            @if($currentUser->isAdministrator())
+                                <div class="row">
+                                    <form action="{{route("users.show", $user->id)}}">
+                                        @csrf
+                                        <div class="flex items-center justify-end mt-4">
+                                            <x-button class="ml-4">
+                                                {{ __('Edit User') }}
+                                            </x-button>
+                                        </div>
+                                    </form>
+
+                                    <form method="POST" class="delete-form" action="{{route("users.destroy", $user->id)}}">
+                                        @csrf
+                                        @method("DELETE")
+                                        <div class="flex items-center justify-end mt-4">
+                                            <x-button class="ml-4">
+                                                {{ __('Delete User') }}
+                                            </x-button>
+                                        </div>
+                                    </form>
+                                </div>
+                            @endif
+
+
                         </div>
                     </div>
                 </div>

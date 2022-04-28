@@ -43,21 +43,12 @@ Route::group(["middleware" => "auth"], function(){
 
         return Storage::download($doc->filepath, $doc->name);
     });
-
-    Route::get("/document/delete/{id}", "App\Http\Controllers\DocumentsController@destroy");
     
 
 
     #############################################   Users   ########################################################################
 
     Route::resource("/users", "App\Http\Controllers\UserController");
-
-    Route::get("/users/delete/{id}", function($id){
-
-        $user = User::find($id)->destroy($id);
-
-        return redirect(route("users.index"));
-    });
     
 });
 

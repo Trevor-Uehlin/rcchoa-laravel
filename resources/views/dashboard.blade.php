@@ -31,7 +31,7 @@
                         &#10133;&nbsp;<a href="{{route("users.create")}}">Create a New User</a>
                         <br />
                         <br />
-                        <i class="fa fa-user" style="font-size:20px;color:blue;"></i></i>&nbsp;&nbsp;<a href="{{route("users.index")}}">Manage Users</a>
+                        &#xe008;&nbsp;<a href="{{route("users.index")}}">Manage Users</a>
                         <br />
                         <br />
                     </div>

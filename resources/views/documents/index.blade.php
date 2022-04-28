@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     
 
-                    <form action="/documents/filtered" class="">
+                    <form id="filter" action="/documents/filtered" class="">
                         <div class="">
                             Category:
                             <select name="category" id="category" class="mt-1 w-15">
@@ -31,6 +31,15 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+        document.getElementById("category").onchange = function() {
+
+            document.getElementById("filter").submit();
+        }
+
+    </script>
 
 
 

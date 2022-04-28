@@ -9,6 +9,11 @@ use App\Models\User;
 
 class UserController extends Controller {
 
+    public function __construct() {
+
+        $this->middleware('admin');
+    }
+
     public function index() {
 
         $users = User::get();

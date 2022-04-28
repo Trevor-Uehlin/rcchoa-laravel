@@ -12,6 +12,11 @@ use App\Models\Document;
 
 class DocumentsController extends Controller {
 
+    public function __construct() {
+
+        $this->middleware('admin')->except(['index', 'showFiltered']);
+    }
+
     public function index($docs = null) {
 
         $selected = !empty($docs) ? $docs[0]->category : "";
